@@ -1,4 +1,6 @@
 import { Component, computed, inject, signal } from '@angular/core';
+import { NgIcon, provideIcons } from '@ng-icons/core';
+import { lucideCloudUpload } from '@ng-icons/lucide';
 import { HlmAlertImports } from '@spartan-ng/helm/alert';
 import { HlmButtonImports } from '@spartan-ng/helm/button';
 import { HlmCardImports } from '@spartan-ng/helm/card';
@@ -9,12 +11,18 @@ import { DashboardStateService } from '../services/dashboard-state.service';
 
 @Component({
   selector: 'app-storage-card',
-  imports: [...HlmCardImports, ...HlmButtonImports, ...HlmAlertImports, ...HlmSeparatorImports, ...HlmSpinnerImports],
+  imports: [NgIcon, ...HlmCardImports, ...HlmButtonImports, ...HlmAlertImports, ...HlmSeparatorImports, ...HlmSpinnerImports],
+  providers: [provideIcons({ lucideCloudUpload })],
   template: `
-    <section hlmCard class="flex h-full flex-col border-border/60 shadow-sm">
-      <div hlmCardHeader>
-        <div hlmCardTitle>Storage</div>
-        <div hlmCardDescription>Object storage · avatar uploads</div>
+    <section hlmCard class="dashboard-card">
+      <div hlmCardHeader class="flex-row items-start gap-3 space-y-0">
+        <span class="icon-badge">
+          <ng-icon name="lucideCloudUpload" class="size-5" />
+        </span>
+        <div class="space-y-1">
+          <div hlmCardTitle>Storage</div>
+          <div hlmCardDescription>Object storage · avatar uploads</div>
+        </div>
       </div>
 
       <div hlmCardContent class="flex flex-col gap-4">
@@ -27,8 +35,8 @@ import { DashboardStateService } from '../services/dashboard-state.service';
               <div hlmAlertDescription>Could not load storage state.</div>
             </div>
           } @else {
-            <span class="text-2xl font-semibold" data-test="storage-objects">{{ state.storage()?.objectCount ?? 0 }}</span>
-            <span class="text-xs text-muted-foreground">objects</span>
+            <span class="metric-value text-2xl" data-test="storage-objects">{{ state.storage()?.objectCount ?? 0 }}</span>
+            <span class="metric-label">objects</span>
           }
         </div>
 
@@ -37,7 +45,7 @@ import { DashboardStateService } from '../services/dashboard-state.service';
         } @else {
           <div class="flex flex-col gap-3">
             <label
-              class="flex cursor-pointer items-center justify-between rounded-lg border border-dashed border-border bg-muted/20 px-4 py-3 text-sm transition-colors hover:bg-muted/40"
+              class="flex cursor-pointer items-center justify-between rounded-xl border border-dashed border-primary/30 bg-primary/5 px-4 py-4 text-sm transition-colors hover:border-primary/50 hover:bg-primary/10"
             >
               <span class="truncate">{{ selectedFileName() ?? 'No file chosen' }}</span>
               <span class="ml-2 shrink-0 rounded-md bg-secondary px-3 py-1 text-xs text-secondary-foreground">Choose file</span>
@@ -68,10 +76,10 @@ import { DashboardStateService } from '../services/dashboard-state.service';
         <div hlmSeparator></div>
 
         <div class="flex-1 space-y-2">
-          <p class="text-xs font-semibold tracking-widest uppercase text-muted-foreground">Recent uploads</p>
+          <p class="section-label">Recent uploads</p>
           <ul class="space-y-2" aria-label="storage-recent-uploads">
             @for (obj of recentObjects(); track obj.key) {
-              <li class="flex items-center justify-between gap-2 rounded-lg border border-border/50 bg-muted/30 px-3 py-2 text-sm">
+              <li class="list-item flex items-center justify-between gap-2">
                 <span class="truncate">{{ obj.filename }}</span>
                 <span class="shrink-0 font-mono text-xs text-muted-foreground">{{ formatSize(obj.size) }}</span>
               </li>

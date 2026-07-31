@@ -1,5 +1,7 @@
 import { Component, computed, effect, inject, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { NgIcon, provideIcons } from '@ng-icons/core';
+import { lucideDatabase } from '@ng-icons/lucide';
 import { HlmAlertImports } from '@spartan-ng/helm/alert';
 import { HlmAvatarImports } from '@spartan-ng/helm/avatar';
 import { HlmBadgeImports } from '@spartan-ng/helm/badge';
@@ -15,6 +17,7 @@ import { DashboardStateService } from '../services/dashboard-state.service';
 @Component({
   selector: 'app-cache-card',
   imports: [
+    NgIcon,
     FormsModule,
     ...HlmCardImports,
     ...HlmButtonImports,
@@ -26,22 +29,28 @@ import { DashboardStateService } from '../services/dashboard-state.service';
     ...HlmAlertImports,
     ...HlmSpinnerImports,
   ],
+  providers: [provideIcons({ lucideDatabase })],
   template: `
-    <section hlmCard class="flex h-full flex-col border-border/60 shadow-sm">
-      <div hlmCardHeader>
-        <div hlmCardTitle>Cache</div>
-        <div hlmCardDescription>Valkey · read-through session cache</div>
+    <section hlmCard class="dashboard-card">
+      <div hlmCardHeader class="flex-row items-start gap-3 space-y-0">
+        <span class="icon-badge">
+          <ng-icon name="lucideDatabase" class="size-5" />
+        </span>
+        <div class="space-y-1">
+          <div hlmCardTitle>Cache</div>
+          <div hlmCardDescription>Valkey · read-through session cache</div>
+        </div>
       </div>
 
       <div hlmCardContent class="flex flex-col gap-4">
-        <div class="flex flex-wrap items-center gap-4">
-          <div class="flex items-baseline gap-2">
-            <span class="text-2xl font-semibold" data-test="cache-hits">{{ state.cacheCounters()?.hits ?? 0 }}</span>
-            <span class="text-xs text-muted-foreground">hits</span>
+        <div class="flex flex-wrap items-center gap-4 rounded-xl border border-border/40 bg-muted/15 p-4">
+          <div class="flex flex-col gap-0.5">
+            <span class="metric-value text-2xl" data-test="cache-hits">{{ state.cacheCounters()?.hits ?? 0 }}</span>
+            <span class="metric-label">hits</span>
           </div>
-          <div class="flex items-baseline gap-2">
-            <span class="text-2xl font-semibold" data-test="cache-misses">{{ state.cacheCounters()?.misses ?? 0 }}</span>
-            <span class="text-xs text-muted-foreground">misses</span>
+          <div class="flex flex-col gap-0.5">
+            <span class="metric-value text-2xl" data-test="cache-misses">{{ state.cacheCounters()?.misses ?? 0 }}</span>
+            <span class="metric-label">misses</span>
           </div>
           @if (state.cacheBadge(); as badge) {
             <span

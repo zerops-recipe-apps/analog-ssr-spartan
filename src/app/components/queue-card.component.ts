@@ -1,5 +1,7 @@
 import { Component, computed, inject, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { NgIcon, provideIcons } from '@ng-icons/core';
+import { lucideRadio } from '@ng-icons/lucide';
 import { HlmAlertImports } from '@spartan-ng/helm/alert';
 import { HlmButtonImports } from '@spartan-ng/helm/button';
 import { HlmCardImports } from '@spartan-ng/helm/card';
@@ -13,6 +15,7 @@ import { DashboardStateService } from '../services/dashboard-state.service';
 @Component({
   selector: 'app-queue-card',
   imports: [
+    NgIcon,
     FormsModule,
     ...HlmCardImports,
     ...HlmButtonImports,
@@ -22,22 +25,28 @@ import { DashboardStateService } from '../services/dashboard-state.service';
     ...HlmSeparatorImports,
     ...HlmSpinnerImports,
   ],
+  providers: [provideIcons({ lucideRadio })],
   template: `
-    <section hlmCard class="flex h-full flex-col border-border/60 shadow-sm">
-      <div hlmCardHeader>
-        <div hlmCardTitle>Queue</div>
-        <div hlmCardDescription>NATS · queue-group activity feed</div>
+    <section hlmCard class="dashboard-card">
+      <div hlmCardHeader class="flex-row items-start gap-3 space-y-0">
+        <span class="icon-badge">
+          <ng-icon name="lucideRadio" class="size-5" />
+        </span>
+        <div class="space-y-1">
+          <div hlmCardTitle>Queue</div>
+          <div hlmCardDescription>NATS · queue-group activity feed</div>
+        </div>
       </div>
 
       <div hlmCardContent class="flex flex-col gap-4">
-        <div class="flex gap-6">
-          <div class="flex items-baseline gap-2">
-            <span class="text-2xl font-semibold" data-test="queue-pending">{{ state.activity()?.pending ?? 0 }}</span>
-            <span class="text-xs text-muted-foreground">pending</span>
+        <div class="flex gap-6 rounded-xl border border-border/40 bg-muted/15 p-4">
+          <div class="flex flex-col gap-0.5">
+            <span class="metric-value text-2xl" data-test="queue-pending">{{ state.activity()?.pending ?? 0 }}</span>
+            <span class="metric-label">pending</span>
           </div>
-          <div class="flex items-baseline gap-2">
-            <span class="text-2xl font-semibold" data-test="queue-processed">{{ state.activity()?.processed ?? 0 }}</span>
-            <span class="text-xs text-muted-foreground">processed</span>
+          <div class="flex flex-col gap-0.5">
+            <span class="metric-value text-2xl" data-test="queue-processed">{{ state.activity()?.processed ?? 0 }}</span>
+            <span class="metric-label">processed</span>
           </div>
         </div>
 
@@ -66,10 +75,10 @@ import { DashboardStateService } from '../services/dashboard-state.service';
         <div hlmSeparator></div>
 
         <div class="flex-1 space-y-2">
-          <p class="text-xs font-semibold tracking-widest uppercase text-muted-foreground">Recent events</p>
+          <p class="section-label">Recent events</p>
           <ul class="space-y-2" aria-label="queue-recent-events">
             @for (entry of recentEvents(); track entry.timestamp + entry.userId) {
-              <li class="rounded-lg border border-border/50 bg-muted/30 px-3 py-2 text-sm">
+              <li class="list-item">
                 <span class="font-mono text-xs text-muted-foreground">{{ entry.type }}</span>
                 <span class="font-medium">{{ entry.name }}</span>
                 @if (entry.message) {
