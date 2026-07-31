@@ -4,6 +4,7 @@
 @import "tailwindcss/utilities.css";
 
 @import "@spartan-ng/brain/hlm-tailwind-preset.css";
+@import "tw-animate-css";
 
 :root {
   color-scheme: light;
@@ -11,65 +12,65 @@
   --font-sans: "Geologica", "Roboto", sans-serif;
   --font-mono: "JetBrains Mono", monospace;
 
-  --radius: 0.75rem;
-  --background: oklch(0.99 0.005 250);
-  --foreground: oklch(0.2 0.02 250);
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.2 0.02 250);
+  --radius: 0.875rem;
+  --background: oklch(0.985 0.008 250);
+  --foreground: oklch(0.18 0.025 250);
+  --card: oklch(1 0 0 / 0.72);
+  --card-foreground: oklch(0.18 0.025 250);
   --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.2 0.02 250);
-  --primary: oklch(0.62 0.12 185);
+  --popover-foreground: oklch(0.18 0.025 250);
+  --primary: oklch(0.58 0.13 185);
   --primary-foreground: oklch(0.99 0 0);
-  --secondary: oklch(0.96 0.01 250);
-  --secondary-foreground: oklch(0.25 0.02 250);
-  --muted: oklch(0.96 0.008 250);
-  --muted-foreground: oklch(0.5 0.02 250);
-  --accent: oklch(0.94 0.03 185);
-  --accent-foreground: oklch(0.25 0.06 185);
+  --secondary: oklch(0.95 0.015 250);
+  --secondary-foreground: oklch(0.22 0.025 250);
+  --muted: oklch(0.955 0.01 250);
+  --muted-foreground: oklch(0.48 0.025 250);
+  --accent: oklch(0.93 0.04 185);
+  --accent-foreground: oklch(0.22 0.06 185);
   --destructive: oklch(0.55 0.22 25);
-  --border: oklch(0.9 0.01 250);
-  --input: oklch(0.9 0.01 250);
-  --ring: oklch(0.62 0.12 185);
-  --sidebar: oklch(0.98 0.005 250);
-  --sidebar-foreground: oklch(0.2 0.02 250);
-  --sidebar-primary: oklch(0.62 0.12 185);
+  --border: oklch(0.9 0.012 250);
+  --input: oklch(0.92 0.012 250);
+  --ring: oklch(0.58 0.13 185);
+  --sidebar: oklch(0.98 0.008 250);
+  --sidebar-foreground: oklch(0.18 0.025 250);
+  --sidebar-primary: oklch(0.58 0.13 185);
   --sidebar-primary-foreground: oklch(0.99 0 0);
-  --sidebar-accent: oklch(0.94 0.03 185);
-  --sidebar-accent-foreground: oklch(0.25 0.06 185);
-  --sidebar-border: oklch(0.9 0.01 250);
-  --sidebar-ring: oklch(0.62 0.12 185);
+  --sidebar-accent: oklch(0.93 0.04 185);
+  --sidebar-accent-foreground: oklch(0.22 0.06 185);
+  --sidebar-border: oklch(0.9 0.012 250);
+  --sidebar-ring: oklch(0.58 0.13 185);
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
     color-scheme: dark;
 
-    --background: oklch(0.16 0.02 250);
-    --foreground: oklch(0.97 0.005 250);
-    --card: oklch(0.2 0.02 250);
-    --card-foreground: oklch(0.97 0.005 250);
-    --popover: oklch(0.2 0.02 250);
-    --popover-foreground: oklch(0.97 0.005 250);
-    --primary: oklch(0.72 0.12 185);
-    --primary-foreground: oklch(0.15 0.02 185);
-    --secondary: oklch(0.26 0.02 250);
-    --secondary-foreground: oklch(0.97 0.005 250);
-    --muted: oklch(0.26 0.02 250);
-    --muted-foreground: oklch(0.68 0.02 250);
-    --accent: oklch(0.28 0.04 185);
+    --background: oklch(0.14 0.022 250);
+    --foreground: oklch(0.97 0.006 250);
+    --card: oklch(0.19 0.024 250 / 0.75);
+    --card-foreground: oklch(0.97 0.006 250);
+    --popover: oklch(0.19 0.024 250);
+    --popover-foreground: oklch(0.97 0.006 250);
+    --primary: oklch(0.72 0.13 185);
+    --primary-foreground: oklch(0.14 0.03 185);
+    --secondary: oklch(0.24 0.024 250);
+    --secondary-foreground: oklch(0.97 0.006 250);
+    --muted: oklch(0.24 0.024 250);
+    --muted-foreground: oklch(0.66 0.02 250);
+    --accent: oklch(0.27 0.045 185);
     --accent-foreground: oklch(0.92 0.04 185);
     --destructive: oklch(0.65 0.2 25);
-    --border: oklch(0.32 0.02 250);
-    --input: oklch(0.32 0.02 250);
-    --ring: oklch(0.72 0.12 185);
-    --sidebar: oklch(0.2 0.02 250);
-    --sidebar-foreground: oklch(0.97 0.005 250);
-    --sidebar-primary: oklch(0.72 0.12 185);
-    --sidebar-primary-foreground: oklch(0.15 0.02 185);
-    --sidebar-accent: oklch(0.28 0.04 185);
+    --border: oklch(0.3 0.022 250);
+    --input: oklch(0.3 0.022 250);
+    --ring: oklch(0.72 0.13 185);
+    --sidebar: oklch(0.19 0.024 250);
+    --sidebar-foreground: oklch(0.97 0.006 250);
+    --sidebar-primary: oklch(0.72 0.13 185);
+    --sidebar-primary-foreground: oklch(0.14 0.03 185);
+    --sidebar-accent: oklch(0.27 0.045 185);
     --sidebar-accent-foreground: oklch(0.92 0.04 185);
-    --sidebar-border: oklch(0.32 0.02 250);
-    --sidebar-ring: oklch(0.72 0.12 185);
+    --sidebar-border: oklch(0.3 0.022 250);
+    --sidebar-ring: oklch(0.72 0.13 185);
   }
 }
 
@@ -78,13 +79,66 @@
     @apply border-border outline-ring/50;
   }
 
+  html {
+    scroll-behavior: smooth;
+  }
+
   body {
     @apply bg-background text-foreground antialiased;
     font-family: var(--font-sans);
+    background-image:
+      radial-gradient(ellipse 80% 50% at 50% -20%, oklch(0.72 0.12 185 / 0.14), transparent),
+      radial-gradient(ellipse 60% 40% at 100% 0%, oklch(0.65 0.1 220 / 0.08), transparent),
+      linear-gradient(to bottom, oklch(0.985 0.008 250), oklch(0.97 0.01 250));
+    background-attachment: fixed;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    body {
+      background-image:
+        radial-gradient(ellipse 80% 50% at 50% -20%, oklch(0.55 0.12 185 / 0.18), transparent),
+        radial-gradient(ellipse 60% 40% at 100% 0%, oklch(0.45 0.08 220 / 0.12), transparent),
+        linear-gradient(to bottom, oklch(0.14 0.022 250), oklch(0.12 0.02 250));
+    }
   }
 
   code,
   pre {
     font-family: var(--font-mono);
+  }
+}
+
+@layer components {
+  .dashboard-card {
+    @apply relative flex h-full flex-col overflow-hidden border-border/50 bg-card shadow-sm backdrop-blur-xl transition-all duration-300;
+  }
+
+  .dashboard-card::before {
+    content: "";
+    @apply pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-primary/40 to-transparent;
+  }
+
+  .dashboard-card:hover {
+    @apply border-primary/25 shadow-md shadow-primary/5;
+  }
+
+  .metric-value {
+    @apply text-3xl font-semibold tracking-tight tabular-nums;
+  }
+
+  .metric-label {
+    @apply text-xs font-medium uppercase tracking-wider text-muted-foreground;
+  }
+
+  .section-label {
+    @apply text-[11px] font-semibold uppercase tracking-[0.14em] text-muted-foreground;
+  }
+
+  .list-item {
+    @apply rounded-xl border border-border/40 bg-muted/25 px-3.5 py-2.5 text-sm transition-colors hover:border-border/70 hover:bg-muted/40;
+  }
+
+  .icon-badge {
+    @apply inline-flex size-10 shrink-0 items-center justify-center rounded-xl bg-primary/10 text-primary ring-1 ring-primary/15;
   }
 }
