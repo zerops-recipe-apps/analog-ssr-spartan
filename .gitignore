@@ -1,0 +1,24 @@
+# Compiled output
+/dist
+/tmp
+/out-tsc
+/migrate.cjs
+/seed.cjs
+
+# Node
+/node_modules
+npm-debug.log
+
+# IDEs and editors
+.idea/
+.vscode/*
+!.vscode/settings.json
+
+# Miscellaneous
+/.angular/cache
+
+# System files
+.DS_Store
+
+# Environment files
+.env*

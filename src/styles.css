@@ -1,0 +1,90 @@
+@layer theme, base, components, utilities;
+@import "tailwindcss/theme.css" layer(theme);
+@import "tailwindcss/preflight.css" layer(base);
+@import "tailwindcss/utilities.css";
+
+@import "@spartan-ng/brain/hlm-tailwind-preset.css";
+
+:root {
+  color-scheme: light;
+
+  --font-sans: "Geologica", "Roboto", sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+
+  --radius: 0.75rem;
+  --background: oklch(0.99 0.005 250);
+  --foreground: oklch(0.2 0.02 250);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.2 0.02 250);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.2 0.02 250);
+  --primary: oklch(0.62 0.12 185);
+  --primary-foreground: oklch(0.99 0 0);
+  --secondary: oklch(0.96 0.01 250);
+  --secondary-foreground: oklch(0.25 0.02 250);
+  --muted: oklch(0.96 0.008 250);
+  --muted-foreground: oklch(0.5 0.02 250);
+  --accent: oklch(0.94 0.03 185);
+  --accent-foreground: oklch(0.25 0.06 185);
+  --destructive: oklch(0.55 0.22 25);
+  --border: oklch(0.9 0.01 250);
+  --input: oklch(0.9 0.01 250);
+  --ring: oklch(0.62 0.12 185);
+  --sidebar: oklch(0.98 0.005 250);
+  --sidebar-foreground: oklch(0.2 0.02 250);
+  --sidebar-primary: oklch(0.62 0.12 185);
+  --sidebar-primary-foreground: oklch(0.99 0 0);
+  --sidebar-accent: oklch(0.94 0.03 185);
+  --sidebar-accent-foreground: oklch(0.25 0.06 185);
+  --sidebar-border: oklch(0.9 0.01 250);
+  --sidebar-ring: oklch(0.62 0.12 185);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    color-scheme: dark;
+
+    --background: oklch(0.16 0.02 250);
+    --foreground: oklch(0.97 0.005 250);
+    --card: oklch(0.2 0.02 250);
+    --card-foreground: oklch(0.97 0.005 250);
+    --popover: oklch(0.2 0.02 250);
+    --popover-foreground: oklch(0.97 0.005 250);
+    --primary: oklch(0.72 0.12 185);
+    --primary-foreground: oklch(0.15 0.02 185);
+    --secondary: oklch(0.26 0.02 250);
+    --secondary-foreground: oklch(0.97 0.005 250);
+    --muted: oklch(0.26 0.02 250);
+    --muted-foreground: oklch(0.68 0.02 250);
+    --accent: oklch(0.28 0.04 185);
+    --accent-foreground: oklch(0.92 0.04 185);
+    --destructive: oklch(0.65 0.2 25);
+    --border: oklch(0.32 0.02 250);
+    --input: oklch(0.32 0.02 250);
+    --ring: oklch(0.72 0.12 185);
+    --sidebar: oklch(0.2 0.02 250);
+    --sidebar-foreground: oklch(0.97 0.005 250);
+    --sidebar-primary: oklch(0.72 0.12 185);
+    --sidebar-primary-foreground: oklch(0.15 0.02 185);
+    --sidebar-accent: oklch(0.28 0.04 185);
+    --sidebar-accent-foreground: oklch(0.92 0.04 185);
+    --sidebar-border: oklch(0.32 0.02 250);
+    --sidebar-ring: oklch(0.72 0.12 185);
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: var(--font-sans);
+  }
+
+  code,
+  pre {
+    font-family: var(--font-mono);
+  }
+}
