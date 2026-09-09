@@ -5,7 +5,7 @@ Analog SSR + Better Auth showcase styled with [spartan/ui](https://spartan.ng/) 
 ## Zerops service facts
 
 - HTTP port: dev `5173` (Vite) / prod `3000` (Nitro SSR server)
-- Runtime base: `nodejs@22` (dev + prod)
+- Runtime base: `nodejs@24` (dev + prod)
 - Managed services: Postgres, Valkey, NATS, Meilisearch, object storage
 
 ## Zerops dev
