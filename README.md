@@ -24,7 +24,7 @@ The main configuration file — place at repository root. It tells Zerops how to
 zerops:
   - setup: prod
     build:
-      base: nodejs@22
+      base: nodejs@24
       buildCommands:
         - npm ci
         - node scripts/bundle-migrate.mjs
@@ -42,7 +42,7 @@ zerops:
           port: 3000
           path: /
     run:
-      base: nodejs@22
+      base: nodejs@24
       initCommands:
         - zsc execOnce ${appVersionId} --retryUntilSuccessful -- node migrate.cjs
         - zsc execOnce seed-v1 --retryUntilSuccessful -- node seed.cjs
@@ -77,7 +77,7 @@ zerops:
 
   - setup: dev
     build:
-      base: nodejs@22
+      base: nodejs@24
       os: ubuntu
       buildCommands:
         - npm install
@@ -85,7 +85,7 @@ zerops:
       cache:
         - node_modules
     run:
-      base: nodejs@22
+      base: nodejs@24
       os: ubuntu
       initCommands:
         - zsc execOnce ${appVersionId} --retryUntilSuccessful -- node scripts/migrate.mjs
