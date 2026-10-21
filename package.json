@@ -83,8 +83,8 @@
     "@analogjs/vite-plugin-nitro": "3.0.0-alpha.99"
   },
   "overrides": {
-    "@aws-sdk/core": "3.976.0",
-    "@aws-sdk/nested-clients": "3.975.0",
+    "@aws-sdk/core": "3.978.3",
+    "@aws-sdk/nested-clients": "3.997.48",
     "es-toolkit": "1.51.0",
     "@angular/build": {
       "vite": "8.3.4"
